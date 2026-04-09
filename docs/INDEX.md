@@ -57,3 +57,4 @@
 | 2026-04-09 | Playwright 스모크 테스트 추가 — validate:ui를 lint/build/E2E 기반으로 확장 |
 | 2026-04-09 | 브라우저 직접 확인 절차 추가 — 자동 검증 보완용 수동 QA 게이트 문서화 |
 | 2026-04-09 | TASK-007 완료 — 한글 IME 입력 중복 생성 수정, IME 회귀 테스트 추가, progress/tasks 동기화 |
+| 2026-04-09 | TASK-007 worklog 기록 — efd9883 커밋 맥락을 worklog에 추가 |

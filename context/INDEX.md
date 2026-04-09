@@ -13,6 +13,10 @@
 | architecture-tech-stack | architecture | high | 사용 중인 기술 스택, 파일 구조 컨벤션, 코딩 스타일. 새 코드 작성 전 참조. |
 | decisions-adr-001-harness-pattern | decisions | medium | 에이전트 컨텍스트 관리 방식으로 파일 기반 Harness 패턴을 선택한 결정. |
 | progress-current | progress | high | 현재 작업 중인 것, 완료된 것, 다음 할 일. 작업 재개 시 가장 먼저 읽을 것. |
+| worklog-2026-04-09 | worklog | high | 2026-04-09 작업 이력. 최근 커밋 맥락 파악 시 읽을 것. |
+| branching-strategy | branching | high | GitHub Flow 브랜치 명명 규칙, PR 체크리스트, 병합 방식. 브랜치 작업 전 참조. |
+| branching-active | branching | medium | 현재 열린 브랜치와 PR 목록. 브랜치 생성/병합 시 에이전트가 업데이트. |
+| tasks-index | tasks | high | 전체 태스크 현황 요약. 작업 시작 시 ready 태스크 파악용. |
 
 ---
 
@@ -24,6 +28,12 @@
 | architecture-tech-stack | context/architecture/tech-stack.md |
 | decisions-adr-001-harness-pattern | context/decisions/ADR-001-harness-pattern.md |
 | progress-current | context/progress/current.md |
+| worklog-2026-04-09 | context/worklog/2026-04-09.md |
+| branching-strategy | context/branching/strategy.md |
+| branching-active | context/branching/active-branches.md |
+| tasks-index | context/tasks/_index.md |
+
+> 개별 태스크 파일: `context/tasks/TASK-NNN.md` (INDEX에 등록 불필요, _index.md로 관리)
 
 ---
 
@@ -32,3 +42,4 @@
 | 날짜 | 변경 내용 |
 |------|----------|
 | 2026-04-09 | 초기 생성 |
+| 2026-04-09 | Worklog / Branching / Task Management 하네스 추가 |

@@ -13,10 +13,9 @@
 | architecture-tech-stack | architecture | high | 사용 중인 기술 스택, 파일 구조 컨벤션, 코딩 스타일. 새 코드 작성 전 참조. |
 | decisions-adr-001-harness-pattern | decisions | medium | 에이전트 컨텍스트 관리 방식으로 파일 기반 Harness 패턴을 선택한 결정. |
 | decisions-adr-002-harness-validation | decisions | high | Harness 패턴이 실전 개발 워크플로우에서 정상 동작함을 확인. TASK-001 검증 기반. |
-| progress-current | progress | high | 현재 작업 중인 것, 완료된 것, 다음 할 일. 작업 재개 시 가장 먼저 읽을 것. 마지막 업데이트: TASK-003 완료. |
+| progress-current | progress | high | 현재 작업 중인 것, 완료된 것, 다음 할 일. 작업 재개 시 가장 먼저 읽을 것. 마지막 업데이트: TASK-004 완료. |
 | worklog-2026-04-09 | worklog | high | 2026-04-09 작업 이력. 최근 커밋 맥락 파악 시 읽을 것. |
 | branching-strategy | branching | high | GitHub Flow 브랜치 명명 규칙, PR 체크리스트, 병합 방식. 브랜치 작업 전 참조. |
-| branching-active | branching | medium | 현재 열린 브랜치와 PR 목록. 브랜치 생성/병합 시 에이전트가 업데이트. |
 | tasks-index | tasks | high | 전체 태스크 현황 요약. 작업 시작 시 ready 태스크 파악용. |
 
 ---
@@ -31,7 +30,6 @@
 | progress-current | docs/progress/current.md |
 | worklog-2026-04-09 | docs/worklog/2026-04-09.md |
 | branching-strategy | docs/branching/strategy.md |
-| branching-active | docs/branching/active-branches.md |
 | tasks-index | docs/tasks/_index.md |
 | decisions-adr-002-harness-validation | docs/decisions/ADR-002-harness-validation-success.md |
 
@@ -49,3 +47,5 @@
 | 2026-04-09 | TASK-002 완료 — AGENTS.md 추가, context/ → docs/ 리네임, branching/tasks/progress 동기화 |
 | 2026-04-09 | TASK-003 시작 — harness:check 스크립트 및 관련 진행 상태 문서 추가 |
 | 2026-04-09 | TASK-003 완료 — harness:check 스크립트 구현, architecture/progress/tasks 동기화 |
+| 2026-04-09 | TASK-003 병합 반영 — branching/active-branches.md를 main 기준 상태로 동기화 |
+| 2026-04-09 | TASK-004 완료 — 브랜치 상태 문서 제거, Git 직접 조회 기반 운영으로 전환 |

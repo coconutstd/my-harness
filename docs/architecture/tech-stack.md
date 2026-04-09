@@ -40,6 +40,7 @@ docs/               ← Harness 컨텍스트 파일
 - Server Component 우선, 필요 시에만 `'use client'`
 - Tailwind 클래스 직접 사용 (별도 CSS 파일 최소화)
 - 하네스 정합성 검사는 `npm run harness:check`로 수행
+- 브랜치 상태는 문서 대신 `git`과 `npm run harness:sync` 출력으로 확인
 
 ## Import 순서
 

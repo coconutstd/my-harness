@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "harness:check": "node scripts/harness-check.mjs"
+    "harness:check": "node scripts/harness-check.mjs",
+    "harness:sync": "node scripts/harness-sync.mjs"
   },
   "dependencies": {
     "react": "19.1.0",

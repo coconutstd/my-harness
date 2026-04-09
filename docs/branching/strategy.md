@@ -2,7 +2,7 @@
 id: "branching-strategy"
 type: "branching"
 title: "GitHub Flow 브랜치 전략"
-description: "브랜치 명명 규칙, PR 체크리스트, 병합 방식. 브랜치 생성 또는 PR 작업 전 반드시 읽을 것."
+description: "브랜치 명명 규칙, PR 체크리스트, 병합 방식. 브랜치 상태는 Git 직접 조회 기반으로 운영한다."
 tags: ["github-flow", "branch", "PR", "merge"]
 priority: "high"
 updated: "2026-04-09"
@@ -41,6 +41,7 @@ updated: "2026-04-09"
 - 항상 최신 `main`에서 브랜치 생성
 - `main`에 직접 커밋 금지
 - 브랜치 하나 = 기능/수정 하나 (범위를 좁게 유지)
+- 현재 브랜치 상태는 문서가 아니라 `git branch --show-current` 또는 `npm run harness:sync`로 확인
 
 ---
 
@@ -62,6 +63,13 @@ updated: "2026-04-09"
 ## 병합 후 처리
 
 1. feature 브랜치 삭제 (원격 + 로컬)
-2. `docs/branching/active-branches.md` 업데이트
+2. `git pull` 후 `npm run harness:sync`와 `npm run harness:check` 실행
 3. 관련 태스크 status → `done`으로 변경
 4. worklog에 병합 커밋 기록
+
+## 브랜치 상태 조회
+
+- 실시간 브랜치 상태는 저장소 문서에 커밋하지 않는다
+- 현재 브랜치: `git branch --show-current`
+- `main`에 병합된 브랜치: `git branch --merged main`
+- 하네스 요약 출력: `npm run harness:sync`

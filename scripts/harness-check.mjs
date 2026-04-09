@@ -101,10 +101,6 @@ function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function cleanCode(value) {
-  return value.replace(/`/g, "").trim();
-}
-
 function extractTaskId(value) {
   const match = value.match(/TASK-\d+/);
   return match ? match[0] : null;
@@ -131,56 +127,10 @@ function assertFileExists(relativePath, failures) {
 
 function main() {
   const failures = [];
-  const activeBranchesPath = path.join(docsDir, "branching", "active-branches.md");
   const tasksIndexPath = path.join(tasksDir, "_index.md");
   const progressPath = path.join(docsDir, "progress", "current.md");
   const indexPath = path.join(docsDir, "INDEX.md");
-
   const currentBranch = run("git branch --show-current");
-  const mergedBranches = new Set(
-    run("git branch --merged main")
-      .split("\n")
-      .map((line) => line.replace(/^[* ]+/, "").trim())
-      .filter(Boolean),
-  );
-
-  const activeBranchesDoc = readText(activeBranchesPath);
-  const currentRows = parseMarkdownTable(activeBranchesDoc, "현재 열린 브랜치");
-  const mergedRows = parseMarkdownTable(activeBranchesDoc, "최근 병합된 브랜치");
-
-  const hasNoActivePlaceholder =
-    currentRows.length === 1 &&
-    currentRows[0]["브랜치명"] === "(없음)";
-
-  const documentedActiveBranches = hasNoActivePlaceholder
-    ? []
-    : currentRows.map((row) => cleanCode(row["브랜치명"]));
-
-  if (currentBranch === "main") {
-    if (documentedActiveBranches.length > 0) {
-      failures.push(
-        `docs/branching/active-branches.md: current branch is main, but active branches are documented: ${documentedActiveBranches.join(", ")}`,
-      );
-    }
-  } else if (!documentedActiveBranches.includes(currentBranch)) {
-    failures.push(
-      `docs/branching/active-branches.md: current branch "${currentBranch}" is missing from the active branches table`,
-    );
-  }
-
-  for (const row of mergedRows) {
-    const branchName = cleanCode(row["브랜치명"]);
-
-    if (branchName === "(없음)") {
-      continue;
-    }
-
-    if (!mergedBranches.has(branchName)) {
-      failures.push(
-        `docs/branching/active-branches.md: merged branch "${branchName}" is not present in "git branch --merged main"`,
-      );
-    }
-  }
 
   const taskFiles = findTaskFiles();
   const taskIndexDoc = readText(tasksIndexPath);
@@ -259,6 +209,16 @@ function main() {
   } else if (latestTaskId && !progressIndexRow.description.includes(latestTaskId)) {
     failures.push(
       `docs/INDEX.md: progress-current description does not mention ${latestTaskId}`,
+    );
+  }
+
+  const branchingIds = parseMarkdownTable(indexDoc, "전체 컨텍스트 목록")
+    .map((row) => row.id)
+    .filter((id) => id.startsWith("branching-"));
+
+  if (branchingIds.includes("branching-active")) {
+    failures.push(
+      "docs/INDEX.md: branching-active should not be listed; branch state is Git-derived now",
     );
   }
 

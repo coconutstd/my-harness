@@ -18,6 +18,7 @@ updated: "2026-04-09"
 | TASK-004 | 브랜치 상태를 Git 직접 조회 기반으로 전환 | done | high | — |
 | TASK-005 | Next.js 전용 프론트엔드 에이전트 하네스 정비 | done | high | — |
 | TASK-006 | 투두앱 구현 | done | high | — |
+| TASK-007 | 한글 IME 입력 시 투두 중복 생성 수정 | done | high | — |
 
 ---
 

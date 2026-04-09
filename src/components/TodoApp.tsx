@@ -14,6 +14,7 @@ export default function TodoApp() {
   const [todos, setTodos] = useState<TodoItem[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [mounted, setMounted] = useState(false);
+  const isComposingRef = useRef(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -61,6 +62,15 @@ export default function TodoApp() {
   }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    const nativeEvent = e.nativeEvent as KeyboardEvent & { isComposing?: boolean };
+    if (
+      isComposingRef.current ||
+      nativeEvent.isComposing ||
+      nativeEvent.keyCode === 229
+    ) {
+      return;
+    }
+
     if (e.key === 'Enter') {
       addTodo();
     }
@@ -87,6 +97,12 @@ export default function TodoApp() {
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
+            onCompositionStart={() => {
+              isComposingRef.current = true;
+            }}
+            onCompositionEnd={() => {
+              isComposingRef.current = false;
+            }}
             onKeyDown={handleKeyDown}
             placeholder="새 할 일을 입력하세요"
             aria-label="새 할 일 입력"

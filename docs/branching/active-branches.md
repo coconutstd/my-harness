@@ -12,8 +12,7 @@ updated: "2026-04-09"
 
 | 브랜치명 | 목적 | 연결 태스크 | 상태 |
 |---------|------|-----------|------|
-| `feature/task-001-harness-validation` | 3개 하네스(Worklog/Branching/Tasks) 실전 검증 | TASK-001 | 진행중 |
-| `docs/task-002-agents-md-and-rename` | AGENTS.md 추가 및 context/ → docs/ 리네임 | — | 진행중 |
+| (없음) | — | — | — |
 
 ---
 
@@ -21,7 +20,8 @@ updated: "2026-04-09"
 
 | 브랜치명 | 병합일 | 커밋 |
 |---------|--------|------|
-| (없음) | — | — |
+| `docs/task-002-agents-md-and-rename` | 2026-04-09 | `5d3b012` |
+| `feature/task-001-harness-validation` | 2026-04-09 | `7fe0ed8` |
 
 ---
 

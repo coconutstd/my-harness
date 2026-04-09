@@ -62,6 +62,6 @@ updated: "2026-04-09"
 ## 병합 후 처리
 
 1. feature 브랜치 삭제 (원격 + 로컬)
-2. `context/branching/active-branches.md` 업데이트
+2. `docs/branching/active-branches.md` 업데이트
 3. 관련 태스크 status → `done`으로 변경
 4. worklog에 병합 커밋 기록

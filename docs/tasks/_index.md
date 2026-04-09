@@ -28,5 +28,5 @@ updated: "2026-04-09"
 
 ---
 
-> 태스크 생성: `context/tasks/TASK-NNN.md` 파일 생성 후 이 표에 추가  
+> 태스크 생성: `docs/tasks/TASK-NNN.md` 파일 생성 후 이 표에 추가  
 > 상태 변경: 해당 TASK 파일 frontmatter 수정 + 이 표 갱신

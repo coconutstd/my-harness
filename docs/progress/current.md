@@ -14,9 +14,9 @@ updated_reason: "TASK-001 완료 — Harness 실전 검증 성공"
 ## 완료
 
 - [x] Context Harness 패턴 설계
-- [x] `context/` 폴더 구조 생성
+- [x] `docs/` 폴더 구조 생성
 - [x] `CLAUDE.md` 에이전트 지침 작성
-- [x] `context/INDEX.md` 초기 생성
+- [x] `docs/INDEX.md` 초기 생성
 - [x] 각 타입별 예시 컨텍스트 파일 작성
 - [x] Harness 패턴 실전 검증 (About 페이지 개발로 테스트) — 2026-04-09
   - Worklog, Branching, Tasks 3개 하네스 모두 정상 동작 확인

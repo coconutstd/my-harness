@@ -6,7 +6,7 @@
 
 ## 작업 시작 시 필수 절차
 
-1. `context/INDEX.md` 읽기 — 사용 가능한 컨텍스트 목록 파악
+1. `docs/INDEX.md` 읽기 — 사용 가능한 컨텍스트 목록 파악
 2. 태스크와 관련된 컨텍스트 파일만 선택해서 읽기
 3. 컨텍스트를 바탕으로 작업 수행
 
@@ -17,7 +17,7 @@
 ## 컨텍스트 구조
 
 ```
-context/
+docs/
   INDEX.md          ← 항상 여기서 시작
   specs/            ← 프로젝트 스펙, 요구사항, 기획
   architecture/     ← 기술 스택, 시스템 설계, 코드 컨벤션
@@ -48,7 +48,7 @@ updated: "YYYY-MM-DD"
 
 ### INDEX.md 갱신 (필수)
 
-컨텍스트 파일을 **추가/수정/삭제**할 때마다 `context/INDEX.md`를 반드시 갱신한다.
+컨텍스트 파일을 **추가/수정/삭제**할 때마다 `docs/INDEX.md`를 반드시 갱신한다.
 
 INDEX.md 항목 형식:
 ```
@@ -85,31 +85,31 @@ Accepted | Deprecated | Superseded by ADR-XXX
 **중요: 다음 3단계는 반드시 순서대로 모두 수행한다.**
 
 ### Phase 1: 즉시 수행 (커밋 직후)
-- [ ] Worklog 기록: `context/worklog/YYYY-MM-DD.md`에 커밋 섹션 추가
+- [ ] Worklog 기록: `docs/worklog/YYYY-MM-DD.md`에 커밋 섹션 추가
 
 ### Phase 2: 작업 마무리 (상태 변경)
-- [ ] Task 상태 변경: `context/tasks/TASK-NNN.md`의 `status: done` 처리
+- [ ] Task 상태 변경: `docs/tasks/TASK-NNN.md`의 `status: done` 처리
   - 완료 기준 체크리스트 항목들을 `[x]`로 표시
-- [ ] Tasks Index 동기화: `context/tasks/_index.md` 표 갱신 (status 변경 반영)
-- [ ] Branching 정리: 병합 완료 시 `context/branching/active-branches.md` 갱신
+- [ ] Tasks Index 동기화: `docs/tasks/_index.md` 표 갱신 (status 변경 반영)
+- [ ] Branching 정리: 병합 완료 시 `docs/branching/active-branches.md` 갱신
   - "현재 열린 브랜치" → "최근 병합된 브랜치"로 이동
 
 ### Phase 3: 공식화 (문서화)
 **다음 중 해당하는 것을 수행:**
 
 **3-1. 새로운 결정이 내려진 경우**
-- [ ] `context/decisions/ADR-NNN-*.md` 파일 신규 생성 (ADR 형식 준수)
+- [ ] `docs/decisions/ADR-NNN-*.md` 파일 신규 생성 (ADR 형식 준수)
   - 상태, 배경, 결정, 대안, 결과 섹션 포함
 
 **3-2. 진행 상태가 변경된 경우**
-- [ ] `context/progress/current.md` 업데이트
+- [ ] `docs/progress/current.md` 업데이트
   - 완료한 항목을 "완료" 섹션으로 이동
   - "진행 중" 섹션에서 제거
   - "다음 할 일" 섹션 갱신 (필요시)
   - `updated_reason` 필드에 변경 사유 추가 (예: "TASK-001 완료")
 
 **3-3. 컨텍스트 파일 갱신**
-- [ ] `context/INDEX.md` 업데이트
+- [ ] `docs/INDEX.md` 업데이트
   - Phase 3에서 추가/수정된 파일을 INDEX 표에 반영
   - 갱신 이력(업데이트 날짜 + 변경 내용) 추가
 
@@ -120,17 +120,17 @@ Accepted | Deprecated | Superseded by ADR-XXX
 ## 작업 완료 체크리스트
 
 **Phase 1: Worklog**
-- [ ] context/worklog/YYYY-MM-DD.md에 커밋 섹션 추가
+- [ ] docs/worklog/YYYY-MM-DD.md에 커밋 섹션 추가
 
 **Phase 2: 상태 변경**
-- [ ] context/tasks/TASK-NNN.md → status: done
-- [ ] context/tasks/_index.md 동기화
-- [ ] context/branching/active-branches.md 정리 (필요시)
+- [ ] docs/tasks/TASK-NNN.md → status: done
+- [ ] docs/tasks/_index.md 동기화
+- [ ] docs/branching/active-branches.md 정리 (필요시)
 
 **Phase 3: 문서화**
 - [ ] 새 결정 있으면 decisions/ 파일 생성
 - [ ] progress/current.md 업데이트
-- [ ] context/INDEX.md 갱신
+- [ ] docs/INDEX.md 갱신
 
 **최종 확인**
 - [ ] 모든 변경사항 git에 커밋
@@ -144,8 +144,8 @@ Accepted | Deprecated | Superseded by ADR-XXX
 **원칙: 커밋이 없으면 worklog도 없다.** 폐기된 작업은 기록하지 않는다.
 
 - 작업 중(커밋 전): worklog draft를 파일로 저장하지 않음 (세션 내에서만 유지)
-- **커밋 직후**: `context/worklog/YYYY-MM-DD.md` 파일에 해당 커밋 섹션 추가 (파일 없으면 생성)
-- 세션 시작 시: `context/worklog/` 최근 파일을 읽어 이전 맥락 파악
+- **커밋 직후**: `docs/worklog/YYYY-MM-DD.md` 파일에 해당 커밋 섹션 추가 (파일 없으면 생성)
+- 세션 시작 시: `docs/worklog/` 최근 파일을 읽어 이전 맥락 파악
 - INDEX.md에는 최근 5일치 worklog만 노출 (오래된 항목은 목록에서 제거)
 
 **worklog 커밋 섹션 형식:**
@@ -166,16 +166,16 @@ Accepted | Deprecated | Superseded by ADR-XXX
 
 ## Branching 하네스
 
-- 브랜치 생성 전: `context/branching/strategy.md` 읽고 명명 규칙 준수
-- 브랜치 생성 후: `context/branching/active-branches.md` 표에 행 추가
+- 브랜치 생성 전: `docs/branching/strategy.md` 읽고 명명 규칙 준수
+- 브랜치 생성 후: `docs/branching/active-branches.md` 표에 행 추가
 - 브랜치 병합/삭제 후: active-branches.md 업데이트 (열린 목록 → 최근 병합으로 이동)
 
 ---
 
 ## Task Management 하네스
 
-- 사용자가 새 요구사항 제시 시: `context/tasks/TASK-NNN.md` 생성 (status: inbox → 구조화 후 ready)
-- 작업 시작 시: `context/tasks/_index.md` 읽어 ready 태스크 파악 → status: in-progress 로 변경
+- 사용자가 새 요구사항 제시 시: `docs/tasks/TASK-NNN.md` 생성 (status: inbox → 구조화 후 ready)
+- 작업 시작 시: `docs/tasks/_index.md` 읽어 ready 태스크 파악 → status: in-progress 로 변경
 - 작업 완료 시: status: done, 완료 기준 체크, `_index.md` 갱신
 - 태스크 파일은 INDEX.md에 개별 등록하지 않음 (`_index.md`로 통합 관리)
 

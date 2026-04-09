@@ -41,5 +41,8 @@ updated: "2026-04-09"
 - [x] localStorage 저장/불러오기 동작
 - [x] 할 일 추가/완료토글/삭제 동작
 - [x] Enter 키로 추가 동작
+- [x] `npm run build` 통과
+- [x] `npm run test:e2e` 통과
+- [x] `npm run validate:ui` 통과
 - [x] `npm run lint` 통과
 - [x] `npm run harness:check` 통과

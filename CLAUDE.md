@@ -94,6 +94,12 @@ Accepted | Deprecated | Superseded by ADR-XXX
 - [ ] Tasks Index 동기화: `docs/tasks/_index.md` 표 갱신 (status 변경 반영)
 - [ ] 브랜치 상태 확인: `npm run harness:sync` 또는 `git branch --show-current`
   - 브랜치 상태는 문서가 아니라 Git 직접 조회 결과를 기준으로 본다
+- [ ] 프론트엔드/UI 변경이 있으면 `npm run validate:ui` 실행
+  - 현재 기본 게이트는 `lint + build + Playwright smoke test`
+  - UI 회귀가 반복되면 `validate:ui` 안에 시각 회귀 검증까지 확장한다
+- [ ] 브라우저 제어 도구가 사용 가능하면 실제 페이지를 열어 최종 수동 확인
+  - 데스크톱과 모바일 viewport 기준으로 레이아웃, 상호작용, 콘솔 에러를 점검한다
+  - 이 단계는 자동 검증을 대체하지 않고 보완한다
 - [ ] `npm run harness:check` 실행
   - tasks/progress/INDEX 문서가 실제 상태와 일치하는지 검증
 
@@ -129,6 +135,8 @@ Accepted | Deprecated | Superseded by ADR-XXX
 - [ ] docs/tasks/TASK-NNN.md → status: done
 - [ ] docs/tasks/_index.md 동기화
 - [ ] npm run harness:sync 또는 git branch 상태 확인
+- [ ] 프론트엔드/UI 변경 시 npm run validate:ui 실행
+- [ ] 가능하면 브라우저 직접 열어 desktop/mobile 최종 확인
 - [ ] npm run harness:check 실행
 
 **Phase 3: 문서화**
@@ -180,7 +188,7 @@ Accepted | Deprecated | Superseded by ADR-XXX
 
 - 사용자가 새 요구사항 제시 시: `docs/tasks/_index.md`와 기존 브랜치명을 먼저 확인한 뒤 `docs/tasks/TASK-NNN.md` 생성 (status: inbox → 구조화 후 ready)
 - 작업 시작 시: `docs/tasks/_index.md` 읽어 ready 태스크 파악 → status: in-progress 로 변경
-- 작업 완료 시: status: done, 완료 기준 체크, `_index.md` 갱신, `npm run harness:check` 통과 확인
+- 작업 완료 시: status: done, 완료 기준 체크, `_index.md` 갱신, 프론트엔드/UI 변경이면 `npm run validate:ui` 통과 확인, `npm run harness:check` 통과 확인
 - 태스크 파일은 INDEX.md에 개별 등록하지 않음 (`_index.md`로 통합 관리)
 
 **태스크 상태 흐름:** `inbox` → `ready` → `in-progress` → `done` (또는 `cancelled`)
@@ -190,8 +198,13 @@ Accepted | Deprecated | Superseded by ADR-XXX
 ## Harness Check
 
 - 하네스 정합성 검사는 `npm run harness:check`로 수행
+- 프론트엔드/UI 변경의 최소 검증 게이트는 `npm run validate:ui`로 수행
+- `validate:ui`는 현재 `npm run lint`, `npm run build`, `npm run test:e2e`를 순서대로 실행한다
+- 브라우저 제어 도구가 있는 환경에서는 실제 페이지를 열어 시각 회귀와 상호작용 이상 여부를 추가 점검한다
+- 수동 브라우저 점검은 자동 검증을 보완하는 절차이며, 단독으로 완료 기준이 되지 않는다
 - 현재 브랜치/병합 상태 요약은 `npm run harness:sync`로 확인
 - 최소 검증 범위:
   - `docs/tasks/_index.md`와 `docs/tasks/TASK-*.md` 상태/제목/우선순위 일치 여부
   - `docs/progress/current.md`의 최신 상태와 `docs/INDEX.md`의 progress 설명 일치 여부
+- 프론트엔드/UI 태스크 완료 전에는 `validate:ui`와 `harness:check`가 모두 통과해야 한다
 - 태스크 완료 전에는 이 검사가 반드시 통과해야 한다

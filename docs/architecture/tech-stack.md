@@ -28,7 +28,7 @@ src/
   components/       ← 공유 컴포넌트
   lib/              ← 유틸리티, 헬퍼
 public/             ← 정적 파일
-context/            ← Harness 컨텍스트 파일
+docs/               ← Harness 컨텍스트 파일
 ```
 
 ## 코딩 컨벤션

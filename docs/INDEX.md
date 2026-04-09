@@ -25,17 +25,17 @@
 
 | id | path |
 |----|------|
-| specs-project-overview | context/specs/project-overview.md |
-| architecture-tech-stack | context/architecture/tech-stack.md |
-| decisions-adr-001-harness-pattern | context/decisions/ADR-001-harness-pattern.md |
-| progress-current | context/progress/current.md |
-| worklog-2026-04-09 | context/worklog/2026-04-09.md |
-| branching-strategy | context/branching/strategy.md |
-| branching-active | context/branching/active-branches.md |
-| tasks-index | context/tasks/_index.md |
-| decisions-adr-002-harness-validation | context/decisions/ADR-002-harness-validation-success.md |
+| specs-project-overview | docs/specs/project-overview.md |
+| architecture-tech-stack | docs/architecture/tech-stack.md |
+| decisions-adr-001-harness-pattern | docs/decisions/ADR-001-harness-pattern.md |
+| progress-current | docs/progress/current.md |
+| worklog-2026-04-09 | docs/worklog/2026-04-09.md |
+| branching-strategy | docs/branching/strategy.md |
+| branching-active | docs/branching/active-branches.md |
+| tasks-index | docs/tasks/_index.md |
+| decisions-adr-002-harness-validation | docs/decisions/ADR-002-harness-validation-success.md |
 
-> 개별 태스크 파일: `context/tasks/TASK-NNN.md` (INDEX에 등록 불필요, _index.md로 관리)
+> 개별 태스크 파일: `docs/tasks/TASK-NNN.md` (INDEX에 등록 불필요, _index.md로 관리)
 
 ---
 

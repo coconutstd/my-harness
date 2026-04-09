@@ -2,7 +2,7 @@
 id: "task-001"
 type: "task"
 title: "신규 하네스 3종 실전 검증"
-status: "ready"
+status: "in-progress"
 priority: "high"
 tags: ["harness", "validation", "worklog", "branching", "tasks"]
 depends_on: []

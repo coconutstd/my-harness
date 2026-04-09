@@ -1,0 +1,34 @@
+# Context Index
+
+> 에이전트 전용. 작업 시작 시 이 파일을 먼저 읽고, 필요한 컨텍스트만 선택해서 읽을 것.
+> 컨텍스트 파일 변경 시 이 파일도 반드시 갱신할 것.
+
+---
+
+## 전체 컨텍스트 목록
+
+| id | type | priority | description |
+|----|------|----------|-------------|
+| specs-project-overview | specs | high | harness-basic의 목적과 범위. 이 프로젝트가 무엇인지 처음 파악할 때 읽을 것. |
+| architecture-tech-stack | architecture | high | 사용 중인 기술 스택, 파일 구조 컨벤션, 코딩 스타일. 새 코드 작성 전 참조. |
+| decisions-adr-001-harness-pattern | decisions | medium | 에이전트 컨텍스트 관리 방식으로 파일 기반 Harness 패턴을 선택한 결정. |
+| progress-current | progress | high | 현재 작업 중인 것, 완료된 것, 다음 할 일. 작업 재개 시 가장 먼저 읽을 것. |
+
+---
+
+## 파일 경로 맵
+
+| id | path |
+|----|------|
+| specs-project-overview | context/specs/project-overview.md |
+| architecture-tech-stack | context/architecture/tech-stack.md |
+| decisions-adr-001-harness-pattern | context/decisions/ADR-001-harness-pattern.md |
+| progress-current | context/progress/current.md |
+
+---
+
+## 갱신 이력
+
+| 날짜 | 변경 내용 |
+|------|----------|
+| 2026-04-09 | 초기 생성 |

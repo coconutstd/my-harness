@@ -1,7 +1,7 @@
 ---
-id: "tasks-006"
+id: "task-006"
 type: "tasks"
-title: "TASK-006: 투두앱 구현"
+title: "투두앱 구현"
 description: "홈 페이지를 투두앱으로 교체, /about 페이지 삭제, localStorage 지속성 포함"
 tags: ["frontend", "todo", "nextjs"]
 priority: "high"

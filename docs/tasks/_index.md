@@ -15,6 +15,7 @@ updated: "2026-04-09"
 | TASK-001 | 신규 하네스 3종 실전 검증 | done | high | — |
 | TASK-002 | AGENTS.md 추가 및 context/ → docs/ 리네임 | done | medium | — |
 | TASK-003 | Harness 정합성 검증 스크립트 구현 | done | high | — |
+| TASK-004 | 브랜치 상태를 Git 직접 조회 기반으로 전환 | done | high | — |
 
 ---
 

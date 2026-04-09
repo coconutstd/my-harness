@@ -25,7 +25,7 @@ docs/
   decisions/        ← 의사결정 이력 (ADR 형식)
   progress/         ← 현재 진행 상태, 완료 목록, 블로커
   worklog/          ← 커밋 단위 작업 맥락 기록
-  branching/        ← GitHub Flow 브랜치 전략 및 활성 브랜치 목록
+  branching/        ← GitHub Flow 브랜치 전략
   tasks/            ← 태스크(일감) 관리
 ```
 
@@ -92,10 +92,10 @@ Accepted | Deprecated | Superseded by ADR-XXX
 - [ ] Task 상태 변경: `docs/tasks/TASK-NNN.md`의 `status: done` 처리
   - 완료 기준 체크리스트 항목들을 `[x]`로 표시
 - [ ] Tasks Index 동기화: `docs/tasks/_index.md` 표 갱신 (status 변경 반영)
-- [ ] Branching 정리: 병합 완료 시 `docs/branching/active-branches.md` 갱신
-  - "현재 열린 브랜치" → "최근 병합된 브랜치"로 이동
+- [ ] 브랜치 상태 확인: `npm run harness:sync` 또는 `git branch --show-current`
+  - 브랜치 상태는 문서가 아니라 Git 직접 조회 결과를 기준으로 본다
 - [ ] `npm run harness:check` 실행
-  - branch/tasks/progress/INDEX 문서가 실제 상태와 일치하는지 검증
+  - tasks/progress/INDEX 문서가 실제 상태와 일치하는지 검증
 
 ### Phase 3: 공식화 (문서화)
 **다음 중 해당하는 것을 수행:**
@@ -128,7 +128,7 @@ Accepted | Deprecated | Superseded by ADR-XXX
 **Phase 2: 상태 변경**
 - [ ] docs/tasks/TASK-NNN.md → status: done
 - [ ] docs/tasks/_index.md 동기화
-- [ ] docs/branching/active-branches.md 정리 (필요시)
+- [ ] npm run harness:sync 또는 git branch 상태 확인
 - [ ] npm run harness:check 실행
 
 **Phase 3: 문서화**
@@ -171,8 +171,8 @@ Accepted | Deprecated | Superseded by ADR-XXX
 ## Branching 하네스
 
 - 브랜치 생성 전: `docs/branching/strategy.md` 읽고 명명 규칙 준수
-- 브랜치 생성 후: `docs/branching/active-branches.md` 표에 행 추가
-- 브랜치 병합/삭제 후: active-branches.md 업데이트 (열린 목록 → 최근 병합으로 이동)
+- 브랜치 상태는 문서에 저장하지 않고 Git 직접 조회 결과를 사용
+- 작업 중/병합 후 상태 확인은 `npm run harness:sync` 또는 `git branch --show-current`, `git branch --merged main`으로 수행
 
 ---
 
@@ -190,8 +190,8 @@ Accepted | Deprecated | Superseded by ADR-XXX
 ## Harness Check
 
 - 하네스 정합성 검사는 `npm run harness:check`로 수행
+- 현재 브랜치/병합 상태 요약은 `npm run harness:sync`로 확인
 - 최소 검증 범위:
-  - 현재 브랜치와 `docs/branching/active-branches.md` 일치 여부
   - `docs/tasks/_index.md`와 `docs/tasks/TASK-*.md` 상태/제목/우선순위 일치 여부
   - `docs/progress/current.md`의 최신 상태와 `docs/INDEX.md`의 progress 설명 일치 여부
 - 태스크 완료 전에는 이 검사가 반드시 통과해야 한다

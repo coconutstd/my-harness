@@ -40,4 +40,36 @@ test.describe("todo app smoke", () => {
       page.getByText("추가 버튼 또는 Enter 키로 할 일을 추가하세요."),
     ).toBeVisible();
   });
+
+  test("adds a Korean todo only once after IME composition completes", async ({
+    page,
+  }) => {
+    await page.goto("/");
+
+    const input = page.getByRole("textbox", { name: "새 할 일 입력" });
+    await input.focus();
+
+    await page.evaluate(() => {
+      const inputEl = document.querySelector<HTMLInputElement>(
+        'input[aria-label="새 할 일 입력"]',
+      );
+      if (!inputEl) {
+        throw new Error("Todo input not found");
+      }
+
+      inputEl.dispatchEvent(new CompositionEvent("compositionstart", { bubbles: true }));
+      const enterEvent = new KeyboardEvent("keydown", { key: "Enter", bubbles: true });
+      Object.defineProperty(enterEvent, "isComposing", { value: true });
+      inputEl.dispatchEvent(enterEvent);
+      inputEl.dispatchEvent(new CompositionEvent("compositionend", { bubbles: true }));
+    });
+
+    await expect(page.getByText("한글")).toHaveCount(0);
+
+    await input.fill("한글");
+    await input.press("Enter");
+
+    await expect(page.getByText("한글")).toHaveCount(1);
+    await expect(page.getByText("1개 중 1개 남음")).toBeVisible();
+  });
 });

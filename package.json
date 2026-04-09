@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "harness:check": "node scripts/harness-check.mjs"
   },
   "dependencies": {
     "react": "19.1.0",

@@ -8,7 +8,8 @@
 
 1. `docs/INDEX.md` 읽기 — 사용 가능한 컨텍스트 목록 파악
 2. 태스크와 관련된 컨텍스트 파일만 선택해서 읽기
-3. 컨텍스트를 바탕으로 작업 수행
+3. 새 태스크라면 `docs/tasks/_index.md`와 기존 브랜치명을 함께 확인해 `TASK-NNN` 번호 중복이 없는지 검증
+4. 컨텍스트를 바탕으로 작업 수행
 
 > 모든 파일을 읽을 필요 없다. INDEX.md의 `description`을 보고 필요한 것만 읽어라.
 
@@ -93,6 +94,8 @@ Accepted | Deprecated | Superseded by ADR-XXX
 - [ ] Tasks Index 동기화: `docs/tasks/_index.md` 표 갱신 (status 변경 반영)
 - [ ] Branching 정리: 병합 완료 시 `docs/branching/active-branches.md` 갱신
   - "현재 열린 브랜치" → "최근 병합된 브랜치"로 이동
+- [ ] `npm run harness:check` 실행
+  - branch/tasks/progress/INDEX 문서가 실제 상태와 일치하는지 검증
 
 ### Phase 3: 공식화 (문서화)
 **다음 중 해당하는 것을 수행:**
@@ -126,6 +129,7 @@ Accepted | Deprecated | Superseded by ADR-XXX
 - [ ] docs/tasks/TASK-NNN.md → status: done
 - [ ] docs/tasks/_index.md 동기화
 - [ ] docs/branching/active-branches.md 정리 (필요시)
+- [ ] npm run harness:check 실행
 
 **Phase 3: 문서화**
 - [ ] 새 결정 있으면 decisions/ 파일 생성
@@ -174,9 +178,20 @@ Accepted | Deprecated | Superseded by ADR-XXX
 
 ## Task Management 하네스
 
-- 사용자가 새 요구사항 제시 시: `docs/tasks/TASK-NNN.md` 생성 (status: inbox → 구조화 후 ready)
+- 사용자가 새 요구사항 제시 시: `docs/tasks/_index.md`와 기존 브랜치명을 먼저 확인한 뒤 `docs/tasks/TASK-NNN.md` 생성 (status: inbox → 구조화 후 ready)
 - 작업 시작 시: `docs/tasks/_index.md` 읽어 ready 태스크 파악 → status: in-progress 로 변경
-- 작업 완료 시: status: done, 완료 기준 체크, `_index.md` 갱신
+- 작업 완료 시: status: done, 완료 기준 체크, `_index.md` 갱신, `npm run harness:check` 통과 확인
 - 태스크 파일은 INDEX.md에 개별 등록하지 않음 (`_index.md`로 통합 관리)
 
 **태스크 상태 흐름:** `inbox` → `ready` → `in-progress` → `done` (또는 `cancelled`)
+
+---
+
+## Harness Check
+
+- 하네스 정합성 검사는 `npm run harness:check`로 수행
+- 최소 검증 범위:
+  - 현재 브랜치와 `docs/branching/active-branches.md` 일치 여부
+  - `docs/tasks/_index.md`와 `docs/tasks/TASK-*.md` 상태/제목/우선순위 일치 여부
+  - `docs/progress/current.md`의 최신 상태와 `docs/INDEX.md`의 progress 설명 일치 여부
+- 태스크 완료 전에는 이 검사가 반드시 통과해야 한다

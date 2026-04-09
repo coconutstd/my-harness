@@ -27,6 +27,7 @@ src/
   app/              ← 페이지 및 레이아웃 (App Router)
   components/       ← 공유 컴포넌트
   lib/              ← 유틸리티, 헬퍼
+scripts/            ← 로컬 검증/자동화 스크립트
 public/             ← 정적 파일
 docs/               ← Harness 컨텍스트 파일
 ```
@@ -38,6 +39,7 @@ docs/               ← Harness 컨텍스트 파일
 - 경로 alias: `@/` → `src/`
 - Server Component 우선, 필요 시에만 `'use client'`
 - Tailwind 클래스 직접 사용 (별도 CSS 파일 최소화)
+- 하네스 정합성 검사는 `npm run harness:check`로 수행
 
 ## Import 순서
 

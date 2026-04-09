@@ -17,6 +17,7 @@ updated: "2026-04-09"
 | TASK-003 | Harness 정합성 검증 스크립트 구현 | done | high | — |
 | TASK-004 | 브랜치 상태를 Git 직접 조회 기반으로 전환 | done | high | — |
 | TASK-005 | Next.js 전용 프론트엔드 에이전트 하네스 정비 | done | high | — |
+| TASK-006 | 투두앱 구현 | done | high | — |
 
 ---
 

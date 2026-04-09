@@ -80,12 +80,62 @@ Accepted | Deprecated | Superseded by ADR-XXX
 
 ---
 
-## 진행 상태 업데이트
+## 작업 완료 후 필수 절차
 
-작업이 완료되거나 새로운 결정이 내려지면:
-- 관련 `progress/` 파일 업데이트
-- 새 결정은 `decisions/` 파일 생성
-- INDEX.md 갱신
+**중요: 다음 3단계는 반드시 순서대로 모두 수행한다.**
+
+### Phase 1: 즉시 수행 (커밋 직후)
+- [ ] Worklog 기록: `context/worklog/YYYY-MM-DD.md`에 커밋 섹션 추가
+
+### Phase 2: 작업 마무리 (상태 변경)
+- [ ] Task 상태 변경: `context/tasks/TASK-NNN.md`의 `status: done` 처리
+  - 완료 기준 체크리스트 항목들을 `[x]`로 표시
+- [ ] Tasks Index 동기화: `context/tasks/_index.md` 표 갱신 (status 변경 반영)
+- [ ] Branching 정리: 병합 완료 시 `context/branching/active-branches.md` 갱신
+  - "현재 열린 브랜치" → "최근 병합된 브랜치"로 이동
+
+### Phase 3: 공식화 (문서화)
+**다음 중 해당하는 것을 수행:**
+
+**3-1. 새로운 결정이 내려진 경우**
+- [ ] `context/decisions/ADR-NNN-*.md` 파일 신규 생성 (ADR 형식 준수)
+  - 상태, 배경, 결정, 대안, 결과 섹션 포함
+
+**3-2. 진행 상태가 변경된 경우**
+- [ ] `context/progress/current.md` 업데이트
+  - 완료한 항목을 "완료" 섹션으로 이동
+  - "진행 중" 섹션에서 제거
+  - "다음 할 일" 섹션 갱신 (필요시)
+  - `updated_reason` 필드에 변경 사유 추가 (예: "TASK-001 완료")
+
+**3-3. 컨텍스트 파일 갱신**
+- [ ] `context/INDEX.md` 업데이트
+  - Phase 3에서 추가/수정된 파일을 INDEX 표에 반영
+  - 갱신 이력(업데이트 날짜 + 변경 내용) 추가
+
+### 체크리스트 사용법
+```
+다음 템플릿을 참고하여 각 단계를 완료하면서 체크:
+
+## 작업 완료 체크리스트
+
+**Phase 1: Worklog**
+- [ ] context/worklog/YYYY-MM-DD.md에 커밋 섹션 추가
+
+**Phase 2: 상태 변경**
+- [ ] context/tasks/TASK-NNN.md → status: done
+- [ ] context/tasks/_index.md 동기화
+- [ ] context/branching/active-branches.md 정리 (필요시)
+
+**Phase 3: 문서화**
+- [ ] 새 결정 있으면 decisions/ 파일 생성
+- [ ] progress/current.md 업데이트
+- [ ] context/INDEX.md 갱신
+
+**최종 확인**
+- [ ] 모든 변경사항 git에 커밋
+- [ ] 원격 저장소 푸시
+```
 
 ---
 

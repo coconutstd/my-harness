@@ -12,7 +12,7 @@ updated: "2026-04-09"
 
 | 브랜치명 | 목적 | 연결 태스크 | 상태 |
 |---------|------|-----------|------|
-| (없음) | — | — | — |
+| `feature/task-001-harness-validation` | 3개 하네스(Worklog/Branching/Tasks) 실전 검증 | TASK-001 | 진행중 |
 
 ---
 
